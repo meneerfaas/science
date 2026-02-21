@@ -1,0 +1,23 @@
+\documentclass[a4paper, 12pt, extrafontsizes]{memoir}
+
+\usepackage[showframe]{geometry}
+\usepackage{lipsum} % For dummy text
+
+% Set page layout
+\setbinding{0.5cm}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{2.5cm}{*}{1}
+% \setmarginnotes{17pt}{51pt}{\onelineskip}
+\setheadfoot{2\baselineskip}{2\baselineskip}
+\setheaderspaces{*}{*}{1.618}
+\checkandfixthelayout
+% Set paragraph indent and space between paragraphs
+\setlength{\parindent}{0em}
+\setlength{\parskip}{3pt}
+% Hyphenation
+\hyphenpenalty = 500 % lower means more hyphenation
+\raggedbottom % Prevents large spaces between paragraphs
+
+\begin{document}
+\lipsum[1-10] % Dummy text to demonstrate the layout
+\end{document}

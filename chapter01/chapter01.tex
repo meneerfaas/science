@@ -1,0 +1,182 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{images/}}
+% To get the right chapter number
+\ifSubfilesClassLoaded{
+    \externaldocument[main-]{../main}
+    \setcounterref{chapter}{main-chap:benodigdheden}
+    \addtocounter{chapter}{-1}
+    \setcounter{page}{\getpagerefnumber{main-chap:benodigdheden}}
+}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{mypagestyle}
+\chapterstyle{MyChapterStyle}  
+
+\chapter{Benodigdheden}
+\label{chap:benodigdheden}
+
+\begin{objectivesbox}
+    \begin{objectiveslist}
+        \item wat je nodig hebt om te beginnen met programmeren in Python;
+        \item hoe je met mappen werkt in Windows;
+        \item hoe je Mu Editor installeert op je computer.
+    \end{objectiveslist}
+\end{objectivesbox}
+
+Het aardige van computerprogrammeren is, dat je met relatief weinig middelen al heel veel kunt bereiken. Je hebt slechts drie dingen nodig om te beginnen met programmeren in Python:
+\begin{enumerate}[itemsep=0pt]
+    \item een computer met internetverbinding;
+    \item een editor om je programma's te schrijven;
+    \item de Python programmeertaal.
+\end{enumerate}
+
+Tegenwoordig is het mogelijk om te programmeren op een tablet of zelfs met een smartphone, maar dat is niet aan te raden. Het is prettiger werken met een PC of laptop. Je kunt dan sneller typen en je hebt meer overzicht over je programma's. In dit boek gaan we uit van een computer met het besturingssysteem Microsoft Windows, maar je kunt ook MacOS van Apple of Linux gebruiken. De meeste dingen die we in dit boek bespreken, werken op alle drie de besturingssystemen.
+
+De editor die we in dit boek gebruiken heet Mu Editor. Dit is een eenvoudige editor die speciaal is ontwikkeld voor beginnende programmeurs. Mu Editor is gratis en werkt op Windows, MacOS en Linux. Maar voordat we daarmee aan de slag gaan, moeten we er eerst voor zorgen dat we een goede mappenstructuur hebben voor de programma's die we gaan schrijven.
+
+\section{Mappenstructuur}
+\label{sec:mappenstructuur}
+
+\begin{wrapfigure}{R}{0.2\textwidth}
+    \adjustimage{width=2cm, right}{explorer_icon}
+    \caption{Verkenner icoon}
+    \label{fig:explorer_icon}
+\end{wrapfigure}
+Elk computerprogramma dat je gaat maken, bestaat uit een of meer bestanden. Het is handig om deze bestanden in mappen onder te brengen. Zo houd je overzicht over je programma's en vind je ze makkelijk terug. In Windows kun je mappen maken in de Verkenner. Je opent de Verkenner door op het icoontje van de map te klikken in de taakbalk onderaan je scherm. Is dat icoontje niet zichtbaar? \sidepar{Sneltoets Verkenner: \keys{\OSwin + E}} Dan kun je de Verkenner ook openen door de Windows toets \keys{\OSwin} ingedrukt te houden en vervolgens de \keys{E} in te drukken. Onthoud deze toetscombinatie door aan de Engelse term voor Verkenner te denken: \emph{Explorer}.
+
+\begin{figure}[h]
+    \centering
+    \adjustimage{width=0.98\textwidth, rndframe=1mm}{explorer_01}
+    \caption{Verkenner in Windows}
+    \label{fig:explorer_01}
+\end{figure}
+
+In het verkennervenster zie je aan de linkerkant een lijst met mappen en bestanden. Dit is de navigatiekolom. Hier kun je doorheen bladeren om bestanden en mappen te vinden. Aan de rechterkant zie je de inhoud van de map die je hebt geselecteerd. Als je een map selecteert, zie je de bestanden die in die map staan. Figuur~\ref{fig:explorer_01} toont een voorbeeld van de Verkenner in Windows.
+
+Voor de programmeeroefeningen in dit boek gaan we de map \folder{Documenten} gebruiken. Open deze map door erop te klikken in de navigatiekolom van de Verkenner of door te dubbelklikken op het icoontje aan de rechterkant in de Verkenner. Merk op dat in de adresbalk bovenin het Verkennervenster het pad \folder{Deze computer/Documenten} staat (zie figuur~\ref{fig:explorer_02}). Dit is handig om te weten, want zo kun je altijd zien in welke map je bent.
+
+\begin{figure}[h]
+    \centering
+    \adjustimage{width=0.98\textwidth, rndframe=1mm}{explorer_02}
+    \caption{\folder{Documenten}}
+    \label{fig:explorer_02}
+\end{figure}
+
+In \folder{Documenten} gaan we een nieuwe map maken voor onze Python projecten. Je kunt dit op verschillende manieren doen, bijvoorbeeld:
+
+\begin{itemize}[itemsep=0pt]
+    \item \sidepar{Sneltoets nieuwe map: \keys{\ctrl + Shift + N}}klik met de rechtermuisknop op een lege plek in de Verkenner en kies in het verschijnende contextmenu \menu{Nieuw>Map}, of
+    \item Gebruik de toetscombinatie \keys{\ctrl + Shift + N}, of
+    \item Klik op het tabblad \menu{Start} in het lint van de Verkenner en kies \menu{Nieuwe map}, zoals getoond in figuur~\ref{fig:explorer_03}.
+\end{itemize}
+
+\begin{subfigures}
+\begin{figure}[ht]
+    \begin{minipage}[c]{0.49\linewidth}
+            \adjustimage{width=0.95\textwidth, rndframe=1mm}{explorer_03}
+            \caption{Nieuwe map maken}
+            \label{fig:explorer_03}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.49\linewidth}
+            \adjustimage{width=0.95\textwidth, rndframe=1mm}{explorer_04}
+            \caption{\folder{Documenten/Pythonprojecten}}
+            \label{fig:explorer_04}
+    \end{minipage}
+\end{figure}
+\end{subfigures}
+
+Noem de nieuwe map \directory{Pythonprojecten}. Mocht je een typfoutje maken, of per ongeluk te snel op \keys{Enter} drukken, geen nood. Je kunt de mapnaam altijd weer wijzigen, bijvoorbeeld door:
+
+\begin{itemize}[itemsep=0pt]
+    \item \sidepar{Sneltoets naam wijzigen: \keys{F2}}er nogmaals op te klikken met de linkermuisknop, of
+    \item er met de rechtermuisknop op te klikken en \menu{Naam wijzigen} te kiezen in het contextmenu, of
+    \item de \keys{F2} toets in te drukken.
+\end{itemize}
+
+Open \folder{Pythonprojecten} door erop te dubbelklikken. Je ziet dat de map nog leeg is. Maak in \folder{Pythonprojecten} een nieuwe map aan met de naam \directory{Oefeningen}. Dit is de map waarin je de programmeeroefeningen uit dit boek gaat opslaan. Je mappenstructuur ziet er nu uit zoals in figuur~\ref{fig:mappenstructuur}.
+
+\begin{figure}[h]
+    \centering
+    \adjustimage{width=0.98\textwidth, rndframe=1mm}{explorer_05}
+    \caption{\folder{Documenten/Pythonprojecten/Oefeningen}}
+    \label{fig:explorer_05}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{forest}
+        pic dir tree,
+        pic root,
+        for tree={% folder icons by default; override using file for file icons
+                directory,
+            },
+        [Documenten
+                    [Pythonprojecten
+                            [Oefeningen
+                            ]
+                    ]
+            ]
+    \end{forest}
+    \caption{Mappenstructuur}
+    \label{fig:mappenstructuur}
+\end{figure}
+
+In het begin zullen onze Pythonprogramma's nog niet zo groot zijn. Maar naarmate je meer programmeert, zul je merken dat je steeds meer bestanden nodig hebt. Dan is het heel belangrijk dat je met mappen werkt. De mappenstructuur die we hier hebben gemaakt, is een goede basis. Later zullen we er nog mappen aan toevoegen.
+
+\section {Mu Editor}
+\label{sec:mu_editor}
+
+\begin{wrapfigure}{R}{0.15\textwidth}
+    \adjustimage{width=1.5cm, right}{mu_logo}
+\end{wrapfigure}
+Mu Editor is een zogenoemde \emph{Integrated Development Environment} (IDE): een programmeeromgeving waarin je code kunt typen, bewerken en uitvoeren. Je kunt Mu Editor gratis downloaden van de website \url{https://codewith.mu/}. Klik op de knop \menu{Download} en kies de versie voor jouw besturingssysteem.
+
+\begin{figure}[h]
+    \centering
+    \adjustimage{width=0.98\textwidth, rndframe=1mm}{mu_download}
+    \caption{Download Mu}
+    \label{fig:mu_download}
+\end{figure}
+
+Na het downloaden van het installatiebestand, klik je erop om het te openen, zie figuur~\ref{fig:mu_download}. Daarmee wordt de installatie gestart. Kun je het gedownloade bestand niet vinden in je webbrowser, gebruik dan de Verkenner om naar de map \folder{Downloads} te gaan. Hierin staan alle bestanden die je van internet hebt gedownload.
+
+\begin{subfigures}
+    \begin{figure}[ht]
+        \begin{minipage}[c]{0.49\linewidth}
+                \adjustimage{width=0.95\textwidth, rndframe=1mm}{mu_setup_start}
+                \caption{Start de installatie}
+                \label{fig:mu_setup_start}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[c]{0.49\linewidth}
+                \adjustimage{width=0.95\textwidth, rndframe=1mm}{mu_setup_finish}
+                \caption{De installatie is klaar}
+                \label{fig:mu_setup_finish}
+        \end{minipage}
+    \end{figure}
+\end{subfigures}
+
+Volg de instructies op het scherm om Mu Editor te installeren. Wanneer de installatie klaar is, zie je een venster zoals in figuur~\ref{fig:mu_setup_finish}. Klik op de knop \menu{Finish} om de installatie af te ronden. Als je \texttt{Launch Mu Editor} hebt aangevinkt, wordt het programma meteen opgestart.
+
+Tijdens de eerste keer opstarten van Mu Editor vraagt het programma of je de \emph{mode} wilt kiezen. Kies voor \emph{Python 3} en klik op de knop \menu{OK} (figuur~\ref{fig:mu_mode_selection}). Je ziet nu het hoofdvenster van Mu Editor, zoals in figuur~\ref{fig:mu_mu_editor}.
+
+\begin{figure}[h]
+    \centering
+    \adjustimage{width=0.75\textwidth, rndframe=1mm}{mu_mode_selection}
+    \caption{Mode selecteren}
+    \label{fig:mu_mode_selection}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \adjustimage{width=0.98\textwidth, rndframe=1mm}{mu_editor}
+    \caption{Mu Editor}
+    \label{fig:mu_mu_editor}
+\end{figure}
+
+Een van de voordelen van Mu Editor is, dat Python al is geïnstalleerd. Je hoeft dus niet apart Python te installeren. In de volgende hoofdstukken gaan we aan de slag met Mu Editor en leren we de basis van programmeren in Python.
+
+\end{document}

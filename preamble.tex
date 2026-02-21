@@ -1,0 +1,709 @@
+%--------------------------------------
+% PACKAGES
+%--------------------------------------
+
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{cwpuzzle}
+\usepackage{dashrule}
+\usepackage[dutch]{babel}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{fontawesome5}
+\usepackage{fontspec}
+\usepackage{footnote}
+\usepackage[edges]{forest}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[os=win]{menukeys}
+\usepackage{refcount}
+\usepackage{siunitx}
+\usepackage[skins]{tcolorbox}
+\usepackage[countmax]{subfloat}
+\usepackage{tabularray}
+\usepackage{tikz}
+\usepackage{unicode-math}
+\usepackage{xcolor}
+\usepackage{xr-hyper}
+\usepackage{wrapfig}
+\usepackage[hidelinks]{hyperref}
+\usepackage[use-files]{xsim}
+%\usepackage{lua-visual-debug}
+
+\UseTblrLibrary{booktabs, counter, tikz}
+\usetikzlibrary{%
+    arrows,
+    arrows.meta, 
+    backgrounds,
+    fit,
+    matrix, 
+    positioning, 
+    shapes.geometric, 
+    shapes.symbols, 
+    tikzmark,
+}
+\usetikzmarklibrary{listings}
+
+%--------------------------------------
+% TITLE, AUTHOR, DATE
+%--------------------------------------
+\title{Programmeren met Python}
+\author{Sander Faas}
+\date{2026}
+
+%--------------------------------------
+% FLOATS on FLOAT PAGE to the TOP
+%--------------------------------------
+
+%https://texfaq.org/FAQ-vertposfp
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+%--------------------------------------
+% BASIC PAGE LAYOUT
+%--------------------------------------
+
+% % Set page layout
+% \setbinding{0.5cm}
+% \setlrmarginsandblock{3cm}{2cm}{*}
+% \setulmarginsandblock{2.5cm}{*}{1}
+% % \setmarginnotes{17pt}{51pt}{\onelineskip}
+% \setheadfoot{2\baselineskip}{2\baselineskip}
+% \setheaderspaces{*}{*}{1.618}
+% \checkandfixthelayout
+% % Set paragraph indent and space between paragraphs
+% \setlength{\parindent}{0em}
+% \setlength{\parskip}{3pt}
+% % Hyphenation
+% \hyphenpenalty = 500 % lower means more hyphenation
+% \raggedbottom % Prevents large spaces between paragraphs
+
+% Set page layout
+\settypeblocksize{22cm}{13cm}{*}
+\setbinding{0.5cm}
+\setlrmargins{3cm}{*}{*}
+\setulmargins{4cm}{*}{*}
+\setmarginnotes{17pt}{51pt}{\onelineskip}
+\setheadfoot{2\baselineskip}{2\baselineskip}
+\setheaderspaces{*}{*}{1.618}
+\checkandfixthelayout
+% Set paragraph indent and space between paragraphs
+\setlength{\parindent}{0em}
+\setlength{\parskip}{3pt}
+% Hyphenation
+\hyphenpenalty = 500 % lower means more hyphenation
+\raggedbottom % Prevents large spaces between paragraphs
+
+%--------------------------------------
+% FONTS
+%--------------------------------------
+
+% Smallest acceptable font size
+\renewcommand\RSsmallest{7pt}
+
+% Set fonts (fontspec)
+\defaultfontfeatures{Scale = MatchLowercase}
+\setmainfont{Tex Gyre Pagella}
+\setsansfont{Tex Gyre Heros}
+\setmathfont{Tex Gyre Pagella Math}
+\setmonofont{Source Code Pro}
+
+% Font and color for title on cover page
+\newfontfamily\titlefont{QTImpromptu}
+\definecolor{covertitle}{HTML}{CDFFFF}
+\definecolor{covertitleshadow}{HTML}{555555}
+
+% Font for chapter headings
+\newfontfamily\headingfont{Tex Gyre Heros}
+
+% Font for programming code
+\newfontfamily\codefont{Source Code Pro}
+%\DeclareTextFontCommand{\code}{\codefont}
+
+% Font for captions
+\captiondelim{\par}
+\captionnamefont{\small\sffamily\raggedleft}
+\captiontitlefont{\small\sffamily\itshape\raggedleft}
+\setlength{\belowcaptionskip}{3pt}
+
+% Font for sidenotes
+\renewcommand*{\sideparfont}{\sffamily\small}
+\sideparmargin{outer}
+
+% Visible space character (https://tex.stackexchange.com/questions/50804/explicit-space-character)
+\newcommand\txtspc[1][.3em]{%
+  \mbox{\kern.1em\vrule height.3ex}%
+  \vbox{\hrule width#1}%
+  \hbox{\vrule height.3ex\kern.1em}}
+
+\newcommand\txtspcgray[1][.3em]{%
+  \begingroup\color{black!40}%
+  \mbox{\kern.1em\vrule height.3ex}%
+  \vbox{\hrule width#1}%
+  \hbox{\vrule height.3ex\kern.1em}%
+  \endgroup%
+}
+
+%--------------------------------------
+% CHAPTER STYLE
+%--------------------------------------
+
+\colorlet{chap_color}{blue!40!black}
+\makechapterstyle{MyChapterStyle}{%
+    % Set lengths for the chapter title
+    \setlength{\beforechapskip}{10pt}
+    \setlength{\midchapskip}{20pt}
+    \setlength{\afterchapskip}{60pt}
+    \renewcommand*{\chapnumfont}{\headingfont\bfseries\fontsize{5cm}{1cm}\color{chap_color}\flushright\selectfont}
+    \renewcommand*{\chaptitlefont}{\headingfont\HUGE\bfseries\color{chap_color}\flushright}
+    \renewcommand*{\printchaptername}{}
+    \renewcommand*{\printchapternum}{\chapnumfont\thechapter}
+}
+
+%--------------------------------------
+% SECTION STYLE
+%--------------------------------------
+
+\setsecheadstyle{\headingfont\Large\bfseries\color{chap_color}\raggedright}
+\setsubsecheadstyle{\headingfont\large\bfseries\color{chap_color}\raggedright}
+
+%--------------------------------------
+% PAGE STYLE
+%--------------------------------------
+
+\makepagestyle{mypagestyle}
+\nouppercaseheads
+\makeevenhead{mypagestyle}{}{}{}
+\makeoddhead{mypagestyle}{}{}{}
+\makeevenfoot{mypagestyle}{\sffamily\bfseries\thepage}{}{\sffamily\leftmark}
+\makeoddfoot{mypagestyle}{\sffamily\rightmark}{}{\sffamily\bfseries\thepage}
+
+\copypagestyle{chapter}{mypagestyle}
+
+%--------------------------------------
+% FOOT NOTES
+%--------------------------------------
+
+\setlength{\footmarkwidth}{1em}
+\setlength{\footmarksep}{0em}
+\setlength{\footparindent}{0em}
+\setfootins{1cm}{.5cm}
+
+\footmarkstyle{\textsuperscript{#1}\hskip 0.5em}
+
+
+%--------------------------------------
+% TCOLORBOXES
+%--------------------------------------
+
+% Save and spew notes for tcolorboxes
+% https://tex.stackexchange.com/questions/585246/footnotes-with-tcolorbox
+\BeforeBeginEnvironment{tcolorbox}{\savenotes}
+\AfterEndEnvironment{tcolorbox}{\spewnotes}
+\BeforeBeginEnvironment{infobox}{\savenotes}
+\AfterEndEnvironment{infobox}{\spewnotes}
+
+\colorlet{ob_box_color}{blue!40!black}
+\newtcolorbox{objectivesbox}{
+    enhanced,
+    drop fuzzy shadow,
+    boxsep=2.5mm,
+    title=In dit hoofdstuk leer je\dots,
+    coltitle=ob_box_color,
+    colbacktitle=ob_box_color!20!white,
+    colback=white,
+    colframe=ob_box_color,
+    fonttitle=\sffamily\bfseries\large\color{ob_box_color},
+    after skip=1cm,
+    boxrule=1.5pt,
+    overlay={
+            \node[anchor=east] at (frame.north east) [
+                rounded corners,
+                minimum size=1.5cm,
+                inner sep=0pt,
+                xshift=-5mm,
+                line width=1.5pt,
+                fill=white,
+                draw=ob_box_color] {\Huge\color{ob_box_color!80!black}\faEye};
+        }
+}
+
+\newenvironment{objectiveslist}{
+    \begin{itemize}[
+            label=\tiny\color{ob_box_color!80!black}{\faEye},
+            nosep,
+            left=0pt,
+            before=\sffamily
+        ]
+        }
+        {
+    \end{itemize}
+}
+
+\colorlet{info_box_color}{yellow!40!black}
+\newtcolorbox{infobox}[1][Informatief]{
+    enhanced,
+    drop fuzzy shadow,
+    boxsep=2.5mm,
+    title=#1,
+    coltitle=info_box_color,
+    colbacktitle=info_box_color!20!white,
+    colback=white,
+    colframe=info_box_color,
+    fonttitle=\sffamily\bfseries\large\color{info_box_color},
+    before skip=1cm,
+    after skip=1cm,
+    boxrule=1.5pt,
+    overlay={
+            \node[anchor=east] at (frame.north east) [
+                rounded corners,
+                minimum size=1.5cm,
+                inner sep=0pt,
+                xshift=-5mm,
+                line width=1.5pt,
+                fill=white,
+                draw=info_box_color] {\Huge\color{info_box_color!80!black}\faInfoCircle};
+        }
+}
+
+\colorlet{tip_box_color}{blue!40!black}
+\newtcolorbox{tipbox}[1][Tip]{
+    enhanced,
+    drop fuzzy shadow,
+    boxsep=2.5mm,
+    title=#1,
+    coltitle=tip_box_color,
+    colbacktitle=tip_box_color!20!white,
+    colback=white,
+    colframe=tip_box_color,
+    fonttitle=\sffamily\bfseries\large\color{tip_box_color},
+    before skip=1cm,
+    after skip=1cm,
+    boxrule=1.5pt,
+    overlay={
+            \node[anchor=east] at (frame.north east) [
+                rounded corners,
+                minimum size=1.5cm,
+                inner sep=0pt,
+                xshift=-5mm,
+                line width=1.5pt,
+                fill=white,
+                draw=tip_box_color] {\Huge\color{tip_box_color!80!black}\faStyle{regular}\faLightbulb};
+        }
+}
+
+% TColorbox for Mu Editor shell
+\definecolor{mu_grey}{HTML}{EEEEEE}
+\definecolor{mu_ivory}{HTML}{FEFEF7}
+\newfontfamily\uifont{Segoe UI}
+\NewTotalTColorBox{\shellbox}{ O{} m m }{%
+    skin=bicolor,
+    title={\hspace{1mm}Running: #2},
+    frame style={
+        top color=mu_grey,
+        bottom color=mu_grey,
+        draw=black!30,
+    },
+    interior style={
+        draw=black!30,
+    },
+    segmentation style={
+        draw=black!30,
+    },
+    colback=mu_ivory,
+    colbacklower=mu_grey,
+    coltitle=black,
+    colupper=black,
+    collower=black,
+    fonttitle=\uifont\tiny,
+    fontupper=\ttfamily,
+    fontlower=\uifont\tiny,
+    halign=flush left,
+    halign lower=flush right,
+    sharp corners,
+    toptitle=1mm,
+    bottomtitle=0mm,
+    titlerule=0mm,
+    left=1mm,
+    leftrule=0mm,
+    rightrule=0mm,
+    bottomrule=0mm,
+    right=2mm,
+    bottom=0mm,
+    boxsep=1mm,
+    middle=0mm,
+    #1,
+    underlay={
+    \node[anchor=north east] at ([xshift=-2mm]segmentation.north east) [
+        text=black!50,
+    ] (cog) {\faCog};
+    \node[anchor=east] at (cog.west) [
+        font=\uifont\tiny,
+    ] {Python 3};
+    \draw [black!20] ([yshift=-.5mm]cog.north east) -- ([yshift=.5mm]cog.south east);
+    \draw [black!20] ([yshift=-.5mm]cog.north west) -- ([yshift=.5mm]cog.south west);
+    },    
+}{%
+    #3
+    \vspace{6pt}
+    \tcblower
+    \vspace{.5cm}
+}
+
+%--------------------------------------
+% MENUKEYS
+%--------------------------------------
+
+%https://tex.stackexchange.com/questions/387952/create-windows-symbol-and-apple-logo-in-package-menukeys
+\makeatletter
+\tw@make@key@box{OS@mac}{\faApple}
+\tw@make@key@box{OS@win}{\faWindows}
+\tw@make@key@macro*{\OS}
+\makeatother
+
+\newmenumacro{\folder}[/]{pathswithfolder}
+\newmenumacro{\file}[/]{paths}
+
+%--------------------------------------
+% FOREST
+%--------------------------------------
+
+%https://tex.stackexchange.com/a/405253/
+\definecolor{folderbg}{RGB}{124,166,198}
+\definecolor{folderborder}{RGB}{110,144,169}
+\newlength\Size
+\setlength\Size{4pt}
+
+\tikzset{%
+    folder/.pic={%
+        \filldraw [draw=folderborder, top color=folderbg!50, bottom color=folderbg] (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size);
+        \filldraw [draw=folderborder, top color=folderbg!50, bottom color=folderbg] (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+    },
+    file/.pic={%
+        \filldraw [draw=folderborder, top color=folderbg!5, bottom color=folderbg!10] (-\Size,.4*\Size+5pt) coordinate (a) |- (\Size, -1.2*\Size) coordinate (b) -- ++(0,1.6*\Size) coordinate (c) -- ++(-5pt,5pt) coordinate (d) -- cycle (d) |- (c) ;
+    },
+}
+
+\forestset{%
+  declare autowrapped toks={pic me}{},
+  declare boolean register={pic root},
+  pic root=0,
+  pic dir tree/.style={%
+    for tree={%
+      folder,
+      font=\ttfamily,
+      grow'=0,
+    },
+    before typesetting nodes={%
+      for tree={%
+        edge label+/.option={pic me},
+      },
+      if pic root={
+        tikz+={
+          \pic at ([xshift=\Size].west) {folder};
+        },
+        align={l}
+      }{},
+    },
+  },
+  pic me set/.code n args=2{%
+    \forestset{%
+      #1/.style={%
+        inner xsep=2\Size,
+        pic me={pic {#2}},
+      }
+    }
+  },
+  pic me set={directory}{folder},
+  pic me set={file}{file},
+}
+
+%--------------------------------------
+% LISTINGS
+%--------------------------------------
+
+\lstloadlanguages{[3]Python}
+
+\definecolor{code_darkblue}{HTML}{0000A0}
+\definecolor{code_maroon}{HTML}{800000}
+\definecolor{code_sherpablue}{HTML}{005050}
+\definecolor{code_grey}{HTML}{808080}
+\definecolor{code_ivory}{HTML}{FEFEF7}
+
+\def\keywordstyleifnotalreadystringstyle{%
+    \extractcolorspec{.}\currentcolor
+    \extractcolorspec{code_maroon}\stringcolor
+    \ifx\currentcolor\stringcolor\else
+        \bfseries\color{code_sherpablue}%
+    \fi
+}
+
+\lstset{
+    language=[3]Python,
+    aboveskip=\baselineskip,
+    backgroundcolor=\color{code_ivory},
+    basicstyle=\ttfamily,
+    breaklines=true,
+    breakatwhitespace=true,
+    captionpos=b,
+    escapeinside={(*@}{@*)},
+    frame=single,
+    frameround=tttt,
+    morekeywords=[2]{print},
+    moredelim=[s][\color{black}]{\{}{\}},%necessary
+    morestring=**[s]{f"}{"},%to style
+    morestring=**[s]{f'}{'},%f-strings
+    morestring=[d]{\\'},
+    numberbychapter = true,
+    numberstyle=\small\color{code_grey},
+    showstringspaces=false,
+}
+
+\lstdefinestyle{shell}{%
+    commentstyle=\color{black},
+    keywordstyle=\color{black},
+    keywordstyle=\color{black},
+    numberstyle=\color{black},
+    stringstyle=\color{black},
+    numbers=none,
+}
+
+\lstdefinestyle{mu}{%
+    commentstyle=\color{code_grey}\itshape,
+    keywordstyle=\keywordstyleifnotalreadystringstyle,
+    keywordstyle={[2]\color{code_darkblue}},
+    numberstyle=\small\color{code_grey},
+    stringstyle=\color{code_maroon},
+    numbers=left,
+}
+
+% New listing environment to prevent breaking across pages
+\lstnewenvironment{python}[1][]{%
+    \noindent\minipage[t]{\linewidth}\lstset{#1}}{%
+    \endminipage\hfill}
+
+% New listing environment for breakable listings
+\lstnewenvironment{python-breakable}[1][]{\lstset{#1}}{}
+
+%--------------------------------------
+% XSIM EXERCISES
+%--------------------------------------
+
+% Tags for icons
+\DeclareExerciseTagging{icons}
+\pgfkeyssetvalue{icons/laptop}{\faLaptopCode}
+\pgfkeyssetvalue{icons/pen}{\faPencil*}
+
+% Width of the exercise number node
+\newlength{\exerciselabelwidth}
+\setlength{\exerciselabelwidth}{.8cm}
+\newlength{\solutionlabelwidth}
+\setlength{\solutionlabelwidth}{.5cm}
+
+% Exercise environment template 
+\DeclareExerciseEnvironmentTemplate{exercise_tikz}
+{%
+    \edef\iconsize{1.4}% Used to calculate icon spacing
+    \edef\iconsinrow{2}% Used to push icons to the next row if necessary
+    \par\vspace{\IfInsideSolutionTF{0.1\baselineskip}{\baselineskip}}
+    \begingroup\raggedright
+    \trivlist
+    \labelwidth=0pt
+    \labelsep=0pt
+    \item[{%
+        \makebox[0pt][r]{%
+            \smash{%
+                \tikz[baseline=(label.base)]{%
+                    \node[%
+                        fill=chap_color,
+                        text=white,
+                        align=right,
+                        font=\bfseries,
+                        rounded corners,
+                        inner sep=2mm,
+                        text width=\IfInsideSolutionTF{\solutionlabelwidth}{\exerciselabelwidth},
+                        outer sep=0pt,
+                    ] (label) {\GetExerciseProperty{counter}};
+                    \IfInsideSolutionF{
+                        \edef\counter{0}
+                        \edef\xshiftval{0}
+                        \edef\yshiftval{0}
+                        \ForEachExerciseTag{icons}{%
+                            \node [%
+                                text=chap_color,
+                                below=1mm of label.south east,
+                                anchor=north east,
+                                xshift=\xshiftval em,
+                                yshift=\yshiftval em,
+                                outer sep=0pt,
+                                inner sep=0pt
+                            ] {\strut\pgfkeysvalueof{icons/#1}};
+                            \pgfmathparse{\counter+1}
+                            \xdef\counter{\pgfmathresult}
+                            \pgfmathparse{int(mod(\counter,\iconsinrow))}
+                            \xdef\xshiftval{-\iconsize*\pgfmathresult}
+                            \pgfmathparse{int(\counter/\iconsinrow)}
+                            \xdef\yshiftval{-\iconsize*\pgfmathresult}
+                            }
+                    }
+                }\hspace{1em}
+            }
+        }%
+    }]\relax
+}{
+    \endtrivlist
+    \endgroup
+}
+
+% Exercise type opgave
+\DeclareExerciseType{opgave}{
+    exercise-env    = opgave,
+    solution-env    = antwoord,
+    exercise-name   = opgave,
+    exercises-name  = opgaven,
+    solution-name   = antwoord,
+    solutions-name  = antwoorden,
+    exercise-template  = exercise_tikz,
+    solution-template  = exercise_tikz,
+    exercise-heading    = \subsection*,
+    solution-heading    = \subsection*,
+    within = chapter,
+    the-counter = \arabic{opgave}
+}
+
+% Store exercise files in separate folder
+\xsimsetup{
+    path={exercises},
+    %antwoord/print = true % Just for testing purposes
+}
+
+%--------------------------------------
+% QUESTION LISTS
+%--------------------------------------
+
+% To subdivide exercises into questions a, b, c, etc.
+
+\newlist{qlist}{enumerate}{1}
+\setlist[qlist]{%
+    align=left,
+    leftmargin=0.8cm,
+    labelwidth=0.8cm,
+    labelsep=0pt,
+    itemsep=6pt,
+    label=\sffamily\bfseries\large\textcolor{chap_color}{\alph*}
+}
+\newlist{alist}{enumerate}{1}
+\setlist[alist]{%
+    leftmargin=0.6cm,
+    align=left,
+    labelsep=*,
+    itemsep=2pt,
+    label=\sffamily\bfseries\textcolor{chap_color}{\alph*}
+}
+
+% To get the right width for tables in a qlist environment
+% 0.35cm aquired by trial and error
+
+\newlength{\tblrwidth}
+\setlength{\tblrwidth}{\dimexpr\textwidth-0.8cm}
+
+\newlist{tasklist}{itemize}{1}
+\setlist[tasklist]{%
+    align=left,
+    leftmargin=0.5cm,
+    label=\faCaretRight,
+    labelsep=0pt,
+    labelwidth=0.4cm,
+    itemsep=2pt,
+    topsep=3pt,
+}
+
+\newlist{hints}{itemize}{1}
+\setlist[hints]{%
+    align=left,
+    leftmargin=0cm,
+    labelwidth=0.8cm,
+    labelsep=0pt,
+    itemsep=2pt,
+    label=\faLightbulb[regular],
+    topsep=3pt,
+    font=\large\color{chap_color},
+}
+
+%--------------------------------------
+% QUESTION COUNTER
+%--------------------------------------
+
+% To enumerate questions in tblr environments
+
+\preto\tblr{\setcounter{question}{0}}
+\preto\longtblr{\setcounter{question}{0}}
+\preto\opgave{\setcounter{question}{0}}
+\newcounter{question}
+\newcommand\qalph[1][\relax]{%
+\ifx\relax#1\stepcounter{question}%
+\else\setcounter{question}{#1}\fi%
+\alph{question}}
+
+%--------------------------------------
+% TABULARRAY COMMANDS
+%--------------------------------------
+
+% Dotted clines (left, middle, right)
+\NewTblrTableCommand\clineld[1]{\cline[.03em, dotted, rightpos=-1]{#1}}
+\NewTblrTableCommand\clinemd[1]{\cline[.03em, dotted, leftpos=-1, rightpos=-1]{#1}}
+\NewTblrTableCommand\clinerd[1]{\cline[.03em, dotted, leftpos=-1]{#1}}
+
+% Solid clines (left, middle, right)
+\NewTblrTableCommand\clinels[1]{\cline[.03em, rightpos=-1]{#1}}
+\NewTblrTableCommand\clinems[1]{\cline[.03em, leftpos=-1, rightpos=-1]{#1}}
+\NewTblrTableCommand\cliners[1]{\cline[.03em, leftpos=-1]{#1}}
+
+% Top and bottom lines
+\NewTblrTableCommand\topline{\hline[.08em]}
+\NewTblrTableCommand\bottomline{\hline[.08em]}
+
+% Empty theme for long tables
+\NewTblrTheme{empty}{
+  \DefTblrTemplate{foot}{empty}{}
+  \SetTblrTemplate{foot}{empty}
+  \DefTblrTemplate{head}{empty}{}
+  \SetTblrTemplate{head}{empty}
+}
+
+%--------------------------------------
+% DASHRULE COMMANDS
+%--------------------------------------
+
+% Draw a dotted hrule with same style as dotted clines
+
+\newcommand{\hruled}[1][\linewidth]{\hdashrule{#1}{0.08ex}{.4pt 1pt}}
+
+%--------------------------------------
+% PUZZLE
+%--------------------------------------
+
+\PuzzleDefineColorCell{c}{black!15}
+
+%--------------------------------------
+% WRAPFIGURE INTEXTSEP SETTING
+%--------------------------------------
+%https://tex.stackexchange.com/questions/682412/adjust-intextsep-for-wrapfigure-only-continued/682415#682415
+
+\makeatletter
+\patchcmd\WF@putfigmaybe{\lower\intextsep}{}{}{\fail}%
+\AddToHook{env/wrapfigure/begin}{\setlength{\intextsep}{0pt}}
+\makeatother
+
+%--------------------------------------
+% FILLPIC FOR FULL PAGE PICTURE
+%--------------------------------------
+% https://tex.stackexchange.com/questions/516210/how-to-fill-page-with-a-picture
+
+\newcommand\fillpic[1]{%
+    \setbox0\hbox{\includegraphics*[keepaspectratio=true,]{#1}}%
+    \begin{tikzpicture}[overlay,remember picture]
+        \pgfmathsetmacro{\myscale}{max(\the\paperwidth/\the\wd0,\the\paperheight/\the\ht0)}%   
+        \node at (current page.center){\includegraphics*[keepaspectratio=true, scale=\myscale]{#1}};
+  \end{tikzpicture}}

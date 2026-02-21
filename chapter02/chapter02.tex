@@ -1,0 +1,130 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{images/}}
+% To get the right chapter number
+\ifSubfilesClassLoaded{
+    \externaldocument[main-]{../main}
+    \setcounterref{chapter}{main-chap:je_eerste_programma}
+    \addtocounter{chapter}{-1}
+    \setcounter{page}{\getpagerefnumber{main-chap:je_eerste_programma}}
+}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{mypagestyle}
+\chapterstyle{MyChapterStyle}  
+
+\chapter{Je eerste programma}
+\label{chap:je_eerste_programma}
+
+\begin{objectivesbox}
+    \begin{objectiveslist}
+        \item hoe je programmacode typt in Mu Editor;
+        \item hoe je programmacode uitvoert in Mu Editor;
+        \item hoe je je programma opslaat in Mu Editor.
+    \end{objectiveslist}
+\end{objectivesbox}
+
+\section{Hello, World!}
+\label{sec:hello_world}
+
+Sinds de jaren 70 van de vorige eeuw is het traditie dat programmeurs die een nieuwe programmeertaal leren, beginnen met het programma \emph{Hello, World!}. Het woord programma is enigszins overdreven, want het bestaat uit slechts twee regels code. \emph{Hello, World!} is dan ook vooral een eerste kennismaking met de programmeertaal en een manier om te controleren of je programmeeromgeving goed werkt.
+
+Waarschijnlijk heb je Mu Editor al opgestart. Zo niet, doe dat dan nu. Als het goed is, opent het programma automatisch een nieuw codebestand, met daarin de tekst \lstinline[style=mu]{# Write your code here :-)} (figuur~\ref{fig:mu_untitled}). Zie je geen nieuw codebestand, dan kun je er zelf een openen door op de \menu{New} knop te klikken. 
+
+\begin{figure}[ht]
+    \centering
+    \adjustimage{width=0.98\textwidth, rndframe=1mm}{mu_untitled}
+    \caption{Een nieuw codebestand in Mu Editor}
+    \label{fig:mu_untitled}
+\end{figure}
+
+Vervang de tekst \lstinline[style=mu]{# Write your code here :-)} door de code die je hieronder in listing~\ref{lst:hello_world} ziet. Let daarbij goed op het verschil tussen hoofdletters en kleine letters. Als je bijvoorbeeld \lstinline{Print} met een hoofdletter typt in plaats van \lstinline{print}, zal Mu Editor de tekst niet herkennen als een Python-opdracht en een foutmelding geven als we straks het programma uitvoeren.
+
+\begin{lstlisting}[
+    style=mu,
+    float=ht,
+    caption={Hello, World!},
+    label={lst:hello_world}
+]
+# Dit is mijn eerste programma
+print('Hello, World!')
+\end{lstlisting}
+
+De tekst \lstinline[style=mu]{Hello, World!} in regel 2 staat tussen haakjes én tussen aanhalingstekens. Het typen van aanhalingstekens doe je in Windows meestal als volgt:
+
+\begin{enumerate}
+    \item Druk op de aanhalingstekentoets \keys{'} (rechts van de \keys{;} toets). Er verschijnt dan nog niets op je scherm!
+    \item Druk op de spatiebalk. Nu pas verschijnt het aanhalingsteken.
+\end{enumerate}
+
+Om een aanhalingsteken te typen, moet je dus twee toetsen na elkaar indrukken.
+
+\section{Code uitvoeren}
+\label{sec:code_uitvoeren}
+
+In Mu Editor kun je je code uitvoeren door op de \menu{Run} knop te klikken. Wanneer je dit de eerste keer doet, zal Mu Editor vragen je code op te slaan. Daarbij moet je goed opletten dat je de juiste map kiest. De standaardinstelling van Mu Editor is namelijk dat je code wordt opgeslagen in de map \folder{C:/Gebruikers/<jouw gebruikersnaam>/mu-code}. Zie figuur~\ref{fig:mu_save_1}.
+
+\begin{figure}[ht]
+    \centering
+    \adjustimage{width=0.90\textwidth, rndframe=1mm}{mu_save_1}
+    \caption{Standaard opslagmap Mu Editor}
+    \label{fig:mu_save_1}
+\end{figure}
+
+We hebben echter niet voor niets in paragraaf~\ref{sec:mappenstructuur} een mappenstructuur gemaakt! Navigeer in het dialoogvenster \textsc{Save file} naar \folder{Documenten/\\Pythonprojecten/Oefeningen}. Typ vervolgens de naam waaronder je je programma wilt opslaan: \directory{hello\_world}. Klik tenslotte op \menu{Opslaan} om je code op te slaan. Zie figuur~\ref{fig:mu_save_2}.
+
+Na het opslaan, zal Mu Editor je code uitvoeren. Je ziet dan de tekst \lstinline{Hello, World!} verschijnen in de \emph{shell} onderin het venster, zie figuur~\ref{fig:mu_hello_world_2}. 
+
+\begin{figure}[htp]
+    \centering
+    \adjustimage{width=0.90\textwidth, rndframe=1mm}{mu_save_2}
+    \caption{Opslaan in de juiste map}
+    \label{fig:mu_save_2}
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \adjustimage{width=0.98\textwidth, rndframe=1mm}{mu_hello_world_2}
+    \caption{Hello, World! in Mu Editor}
+    \label{fig:mu_hello_world_2}
+\end{figure}
+
+\section{Editor en shell}
+\label{sec:editor_en_shell}
+
+Bij het uitvoeren van \file{hello\_world.py} zie je dat Mu Editor het venster in twee delen splitst (zie figuur~\ref{fig:mu_hello_world_2}):
+
+\begin{itemize}
+    \item De \emph{editor}. Dit is het bovenste deel van het Mu Editor venster. Hier kun je de code voor je programma typen.
+    \item De \emph{shell}. Dit is het onderste deel van het Mu Editor venster. Hier verschijnt de uitvoer van je programma.
+\end{itemize}
+
+In de shell kun je ook zelf commando's typen. Die worden direct uitgevoerd zodra je op de \keys{Enter} toets drukt. Probeer het volgende eens:
+
+\begin{enumerate}
+    \item Klik in de shell onderin het Mu Editor venster, zodat de tekstcursor knippert achter de \texttt{>>>} prompt.
+    \item Typ \lstinline[style=shell]{print('Hallo, Wereld!')} en druk op de \keys{Enter} toets.
+\end{enumerate}
+
+Meteen nadat je het commando hebt ingevoerd, drukt Python de tekst \texttt{Hallo, Wereld!} af in de shell (zie figuur~\ref{fig:mu_shell}). 
+
+\begin{figure}[ht]
+    \centering
+    \adjustimage{width=0.98\textwidth, rndframe=1mm}{mu_shell}
+    \caption{Hallo, Wereld! in de shell}
+    \label{fig:mu_shell}
+\end{figure}
+
+Je kunt commando's in de shell typen zolang Mu Editor het huidige programma uitvoert. Om de shell te sluiten, klik je op de \menu{Stop} knop. De shell verdwijnt dan en je ziet alleen nog de editor.
+
+\begin{infobox}{Wist je dat?}
+Een programma dat \texttt{Hello, World!} op het scherm toont, is traditioneel het eerste dat elke programmeur maakt wanneer die een nieuwe programmeertaal leert. Het is eenvoudig, maar toch heb je nu al een aantal dingen geleerd:
+\begin{tasklist}
+\item Hoe je in Mu editor code typt, opslaat en uitvoert.
+\item Dat je in Python met een hekje \texttt{\#} commentaar kunt aangeven. Commentaar wordt door Python genegeerd bij het uitvoeren van de code.
+\item Dat je in Python een tekst op het scherm kunt tonen met de functie print() en dat de tekst tussen aanhalingstekens moet staan.
+\end{tasklist}
+\end{infobox}
+
+\end{document}

@@ -1,0 +1,28 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\xsimsetup{
+    path={../exercises},
+    %antwoord/print = true % Just for testing purposes
+}
+\graphicspath{{images/}}
+% To get the right chapter number
+\ifSubfilesClassLoaded{
+    \externaldocument[main-]{../main}
+    \setcounterref{chapter}{main-chap:antwoorden}
+    \addtocounter{chapter}{-1}
+    \setcounter{page}{\getpagerefnumber{main-chap:antwoorden}}
+}{}
+
+\renewcommand\lTblrDefaultHruleColorTl{chap_color}
+\pagestyle{empty}
+
+\chapter*{Antwoorden}\label{chap:antwoorden}
+\clearpage
+\section*{Antwoorden hoofdstuk 3}
+% \graphicspath{{../chapter03/images/}}
+\printsolutions[headings=false, chapter=3]
+\clearpage
+
+\end{document}

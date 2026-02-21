@@ -1,0 +1,96 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\graphicspath{{images/}}
+
+\fillpic{cover-image}
+
+\begin{tikzpicture}[overlay, remember picture]
+    % nodes for the title
+    \node [%
+        inner sep=0cm,
+        below=2cm of current page.north,
+        anchor=north,
+        text width=\paperwidth,
+        align=center,
+        text=covertitleshadow,
+        font=\titlefont\bfseries\fontsize{56}{56}\selectfont] (titlenode1sh) {Programmeren in};
+    \node [%
+        inner sep=0cm,
+        align=center,
+        text=covertitle,
+        font=\titlefont\bfseries\fontsize{56}{56}\selectfont]
+        at ([shift={(-0.4ex,0.4ex)}]titlenode1sh) (titlenode1) 
+        {Programmeren in};
+    \node [%
+        inner sep=0cm,
+        below=1cm of titlenode1,
+        anchor=north,
+        text width=\paperwidth,
+        align=center,
+        text=covertitleshadow,
+        font=\titlefont\bfseries\fontsize{96}{96}\selectfont] (titlenode2sh) {PYTHON};
+    \node [%
+        inner sep=0cm,
+        align=center,
+        text=covertitle,
+        font=\titlefont\bfseries\fontsize{96}{96}\selectfont]
+        at ([shift={(-0.4ex,0.4ex)}]titlenode2sh) (titlenode2) 
+        {PYTHON};
+    % node for the author
+    \node [%
+        inner sep=0cm,
+        above=9cm of current page.south east,
+        xshift=-2cm,
+        anchor=south east,
+        text=covertitleshadow,
+        font=\titlefont\bfseries\fontsize{28}{28}\selectfont] (authornodesh) {Sander Faas};
+    \node [%
+        inner sep=0cm,
+        align=center,
+        text=covertitle,
+        font=\titlefont\bfseries\fontsize{28}{28}\selectfont]
+        at ([shift={(-0.4ex,0.4ex)}]authornodesh) (authornode) 
+        {Sander Faas};
+
+    \end{tikzpicture}
+\clearpage
+\begin{tikzpicture}[overlay, remember picture]
+    % nodes for the title
+    \node [%
+        inner sep=0cm,
+        below=5cm of current page.north,
+        anchor=north,
+        text width=\linewidth,
+        align=center,
+        text=black,
+        font=\titlefont\bfseries\fontsize{42}{42}\selectfont] (titlenode1) {Programmeren in};
+    \node [%
+        inner sep=0cm,
+        below=1cm of titlenode1,
+        anchor=north,
+        text width=\linewidth,
+        align=center,
+        text=black,
+        font=\titlefont\bfseries\fontsize{56}{56}\selectfont] (titlenode2) {PYTHON};
+    \node [%
+        inner sep=0cm,
+        below=2cm of titlenode2,
+        anchor=north,
+        text=black,
+        font=\headingfont\bfseries\fontsize{18}{18}\selectfont] (subtitlenode) {module voor het vak Science};
+    % node for the author
+    \node [%
+        inner sep=0cm,
+        below=6cm of titlenode2,
+        anchor=north,
+        text=black,
+        font=\headingfont\bfseries\fontsize{28}{28}\selectfont] (authornode) {door Sander Faas};
+    \node [%
+        inner sep=0cm,
+        above=2cm of current page.south,
+        anchor=south,
+        text=black,
+        font=\headingfont\bfseries\fontsize{18}{18}\selectfont] (datenode) {2026};
+    \end{tikzpicture}
+\end{document}

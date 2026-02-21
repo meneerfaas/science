@@ -1,0 +1,39 @@
+% Compile with LuaLaTeX
+
+\documentclass[a4paper, 12pt, extrafontsizes]{memoir}
+
+\input{preamble}
+\usepackage{subfiles}
+\externaldocument[main-]{\subfix{main}}
+
+\begin{document}
+\graphicspath{{images/}}
+\frontmatter%
+\pagestyle{empty}
+\subfile{cover/cover}
+\mainmatter%
+\pagestyle{mypagestyle}
+\chapterstyle{MyChapterStyle}
+\subfile{chapter01/chapter01}
+\subfile{chapter02/chapter02}
+\subfile{chapter03/chapter03}
+\subfile{chapter04/chapter04}
+% \subfile{chapter05/chapter05}
+% \subfile{chapter06/chapter06}
+% \subfile{chapter07/chapter07}
+% \subfile{chapter08/chapter08}
+% \subfile{chapter09/chapter09}
+% \subfile{chapter10/chapter10}
+% \subfile{chapter11/chapter11}
+% \subfile{chapter12/chapter12}
+% \subfile{chapter13/chapter13}
+%\subfile{solutions/solutions}
+\pagestyle{empty}
+\chapter*{Antwoorden}\label{chap:antwoorden}
+\clearpage
+\section*{Antwoorden hoofdstuk 3}
+\graphicspath{{chapter03/images/}}
+\printsolutions[headings=false, chapter=3]
+\backmatter%
+\end{document}
+
