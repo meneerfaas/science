@@ -11,40 +11,24 @@
 %     \setcounter{page}{\getpagerefnumber{main-chap:overzicht-turtle-functies}}
 % }{}
 
-% Theme for the long tables
-% \NewTblrTheme{empty-with-foot}{
-%     \DeclareTblrTemplate{firstfoot}{empty}{}
-%     \SetTblrTemplate{firstfoot}{empty}
-%     \DeclareTblrTemplate{middlefoot}{empty}{}
-%     \SetTblrTemplate{middlefoot}{empty}
-%     % \DeclareTblrTemplate{lastfoot}{default}{}
-%     % \SetTblrTemplate{lastfoot}{default}
-%     \DeclareTblrTemplate{head}{empty}{}
-%     \SetTblrTemplate{head}{empty}
-%     \DeclareTblrTemplate{note-tag}{default}{\textsuperscript{\InsertTblrNoteTag}}
-%     \DeclareTblrTemplate{note-sep}{default}{\space}
-%     \DeclareTblrTemplate{note-text}{default}{\footnotesize\InsertTblrNoteText}
-%     \DeclareTblrTemplate{note}{default}{
-%         \MapTblrNotes{
-%             \noindent
-%             \UseTblrTemplate{note-tag}{default}
-%             \UseTblrTemplate{note-sep}{default}
-%             \UseTblrTemplate{note-text}{default}
-%             \par
-%         }
-%     }
-% }
-
+\DefTblrTemplate{caption}{empty-with-notes}{}
+\DefTblrTemplate{capcont}{empty-with-notes}{}
+\DefTblrTemplate{contfoot}{empty-with-notes}{}
 \newlength\labellength
-\DeclareTblrTemplate{note}{indentednotes}{%
-  \MapTblrRemarks{%
+\DeclareTblrTemplate{note-text}{empty-with-notes}{\footnotesize\InsertTblrNoteText}
+\DeclareTblrTemplate{note}{empty-with-notes}{%
+  \MapTblrNotes{%
     \settowidth{\labellength}{\UseTblrTemplate{note-tag}{default}\UseTblrTemplate{note-sep}{default}}%
-    \UseTblrTemplate{note-tag}{default}\UseTblrTemplate{note-sep}{default}%
-    \parbox[t]{\dimexpr\linewidth-\labellength}{\UseTblrTemplate{note-text}{default}}%
-    \par}
-}
+    \UseTblrTemplate{note-tag}{default}\UseTblrTemplate{note-sep}{default}\hfill%
+    \parbox[t]{\dimexpr\textwidth-\labellength}{\UseTblrTemplate{note-text}{empty-with-notes}}%
+    \par
+}}
+
 \NewTblrTheme{empty-with-notes}{
-    \SetTblrTemplate{note}{indentednotes}
+  \SetTblrTemplate{caption}{empty-with-notes}
+  \SetTblrTemplate{capcont}{empty-with-notes}
+  \SetTblrTemplate{contfoot}{empty-with-notes}
+  \SetTblrTemplate{note}{empty-with-notes}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagestyle{mypagestyle}
@@ -54,9 +38,9 @@
 \label{chap:overzicht-turtle-functies}
 Deze bijlage bevat een overzicht van de belangrijkste turtle functies, waarvan de meeste in dit boek aan bod zijn gekomen. Een volledig (Engelstalig) overzicht van alle functies vind je in de officiële Python Turtle Graphics documentatie op \url{https://docs.python.org/3/library/turtle.html}.
 \section*{Bewegen en tekenen}
-\begin{longtblr}[theme=empty, presep=0pt, postsep=0pt,]{
+\begin{longtblr}[theme=empty-with-notes, presep=0pt, postsep=0pt,]{
     rowhead = 1,
-    colspec={Q[l]X[l]},
+    colspec={Q[l, wd=5.5cm]X[l]},
     column{1,2} = {font=\ttfamily\footnotesize},
     row{1} = {font=\sffamily\bfseries},
     stretch=1.5}
@@ -86,11 +70,12 @@ Deze bijlage bevat een overzicht van de belangrijkste turtle functies, waarvan d
     {speed(\textit{speed})} & Stel de snelheid van de turtle in. De waarde van \textit{speed} kan variëren van 0 tot en met 10. Daarbij is 1 het langzaamst, 10 snel, en 0 het allersnelst.\\
     \bottomline
 \end{longtblr}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Bediening van de pen}
 \begin{longtblr}[theme=empty-with-notes, presep=0pt, postsep=0pt,
     note{1}={Een lijst van kleurnamen vind je op \url{https://inventwithpython.com/blog/complete-list-tkinter-colors-valid-and-tested.html}}]{
     rowhead = 1,
-    colspec={Q[l]X[l]},
+    colspec={Q[l, wd=5.5cm]X[l]},
     column{1,2} = {font=\ttfamily\footnotesize},
     row{1} = {font=\sffamily\bfseries},
     stretch=1.5}
@@ -98,11 +83,66 @@ Deze bijlage bevat een overzicht van de belangrijkste turtle functies, waarvan d
     Functie & Werking\\
     \clinels{1}\cliners{2}
     %-----------------------------------------------
-    {pendown()\\pd()\\down()} & Zet de pen neer.\\
-    {penup()\\pu()\\up()} & Til de pen op.\\
-    {pensize(\textit{width})\\width(\textit{width})} & Stel de dikte van de pen in.\\
+    {pendown(), pd(), down()} & Zet de pen neer.\\
+    {penup(), pu(), up()} & Til de pen op.\\
+    {pensize(\textit{width}), width(\textit{width})} & Stel de dikte van de pen in.\\
     {pencolor(\textit{color})} & Stel de kleur van de pen in.\TblrNote{1}\\
     \bottomline
 \end{longtblr}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Figuurvulling}
+\begin{longtblr}[theme=empty-with-notes, presep=0pt, postsep=0pt,
+    note{1}={Een lijst van kleurnamen vind je op \url{https://inventwithpython.com/blog/complete-list-tkinter-colors-valid-and-tested.html}}]{
+    rowhead = 1,
+    colspec={Q[l, wd=5.5cm]X[l]},
+    column{1,2} = {font=\ttfamily\footnotesize},
+    row{1} = {font=\sffamily\bfseries},
+    stretch=1.5}
+    \topline
+    Functie & Werking\\
+    \clinels{1}\cliners{2}
+    %-----------------------------------------------
+    {begin\_fill()} & Begin met het vullen van de figuur. Aan te roepen net voor het tekenen van de figuur.\\
+    {end\_fill()} & Beëindig het vullen van de figuur.\\
+    {fillcolor(\textit{color})} & Stel de vulkleur in.\TblrNote{1}\\
+    {color(\textit{pen\_color}, \textit{fill\_color})} & Stel zowel de penkleur als de vulkleur in.\TblrNote{1}\\
+    \bottomline
+\end{longtblr}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Turtle eigenschappen}
+\begin{longtblr}[theme=empty-with-notes, presep=0pt, postsep=0pt,]{
+    rowhead = 1,
+    colspec={Q[l, wd=5.5cm]X[l]},
+    column{1,2} = {font=\ttfamily\footnotesize},
+    row{1} = {font=\sffamily\bfseries},
+    stretch=1.5}
+    \topline
+    Functie & Werking\\
+    \clinels{1}\cliners{2}
+    %-----------------------------------------------
+    {hideturtle(), ht()} & Verberg de turtle. Dit versnelt het tekenen.\\
+    {showturtle(), st()} & Toon de turtle.\\
+    {shape(\textit{name})} & Stel de vorm van de turtle in. Geldige namen zijn: \texttt{'arrow'}, \texttt{'turtle'}, \texttt{'circle'}, \texttt{'square'}, \texttt{'triangle'}, en \texttt{'classic'}.\\
+    {shapesize(\textit{size})} & Stel de grootte van de turtle in.\\
+    \bottomline
+\end{longtblr}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Venstereigenschappen}
+De onderstaande functies hebben betrekking op het venster waarin de turtle zich bevindt. Daarom moet je ze aanroepen met de toevoeging \texttt{screen.}, bijvoorbeeld \texttt{tony.screen.bgcolor('lightblue')}.
+\begin{longtblr}[theme=empty-with-notes, presep=0pt, postsep=0pt,
+    note{1}={Een lijst van kleurnamen vind je op \url{https://inventwithpython.com/blog/complete-list-tkinter-colors-valid-and-tested.html}}]{
+    rowhead = 1,
+    colspec={Q[l, wd=5.5cm]X[l]},
+    column{1,2} = {font=\ttfamily\footnotesize},
+    row{1} = {font=\sffamily\bfseries},
+    stretch=1.5}
+    \topline
+    Functie & Werking\\
+    \clinels{1}\cliners{2}
+    %-----------------------------------------------
+    {screen.bgcolor(\textit{color})} & Stel de achtergrondkleur van het venster in.\TblrNote{1}\\
+    {screen.bgpic(\textit{imagefilename})} & Toon een achtergrondafbeelding in het venster.\\
+    {screen.title(\textit{titlestring})} & Stel de titel van het venster in.\\
+    \bottomline
+\end{longtblr}
 \end{document}
