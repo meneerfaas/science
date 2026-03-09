@@ -11,6 +11,9 @@
 \frontmatter%
 \pagestyle{empty}
 \subfile{cover/cover2}
+\cleardoublepage
+\pagestyle{empty}
+\tableofcontents*
 \mainmatter%
 \pagestyle{mypagestyle}
 \chapterstyle{MyChapterStyle}
@@ -19,15 +22,9 @@
 \subfile{chapter03/chapter03}
 \subfile{chapter04/chapter04}
 \subfile{chapter05/chapter05}
-% \subfile{chapter06/chapter06}
-% \subfile{chapter07/chapter07}
-% \subfile{chapter08/chapter08}
-% \subfile{chapter09/chapter09}
-% \subfile{chapter10/chapter10}
-% \subfile{chapter11/chapter11}
-% \subfile{chapter12/chapter12}
-% \subfile{chapter13/chapter13}
-%\subfile{solutions/solutions}
+\begin{appendices}
+\subfile{appendices/appendix-a}
+\end{appendices}
 \chapter*{Antwoorden}\label{chap:antwoorden}
 \pagestyle{empty}
 \clearpage

@@ -1,0 +1,108 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{images/}}
+% To get the right chapter number
+% \ifSubfilesClassLoaded{
+%     \externaldocument[main-]{../main}
+%     \setcounterref{chapter}{main-chap:overzicht-turtle-functies}
+%     \addtocounter{chapter}{-1}
+%     \setcounter{page}{\getpagerefnumber{main-chap:overzicht-turtle-functies}}
+% }{}
+
+% Theme for the long tables
+% \NewTblrTheme{empty-with-foot}{
+%     \DeclareTblrTemplate{firstfoot}{empty}{}
+%     \SetTblrTemplate{firstfoot}{empty}
+%     \DeclareTblrTemplate{middlefoot}{empty}{}
+%     \SetTblrTemplate{middlefoot}{empty}
+%     % \DeclareTblrTemplate{lastfoot}{default}{}
+%     % \SetTblrTemplate{lastfoot}{default}
+%     \DeclareTblrTemplate{head}{empty}{}
+%     \SetTblrTemplate{head}{empty}
+%     \DeclareTblrTemplate{note-tag}{default}{\textsuperscript{\InsertTblrNoteTag}}
+%     \DeclareTblrTemplate{note-sep}{default}{\space}
+%     \DeclareTblrTemplate{note-text}{default}{\footnotesize\InsertTblrNoteText}
+%     \DeclareTblrTemplate{note}{default}{
+%         \MapTblrNotes{
+%             \noindent
+%             \UseTblrTemplate{note-tag}{default}
+%             \UseTblrTemplate{note-sep}{default}
+%             \UseTblrTemplate{note-text}{default}
+%             \par
+%         }
+%     }
+% }
+
+\newlength\labellength
+\DeclareTblrTemplate{note}{indentednotes}{%
+  \MapTblrRemarks{%
+    \settowidth{\labellength}{\UseTblrTemplate{note-tag}{default}\UseTblrTemplate{note-sep}{default}}%
+    \UseTblrTemplate{note-tag}{default}\UseTblrTemplate{note-sep}{default}%
+    \parbox[t]{\dimexpr\linewidth-\labellength}{\UseTblrTemplate{note-text}{default}}%
+    \par}
+}
+\NewTblrTheme{empty-with-notes}{
+    \SetTblrTemplate{note}{indentednotes}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{mypagestyle}
+\chapterstyle{MyChapterStyle}  
+
+\chapter{Overzicht turtle functies}%
+\label{chap:overzicht-turtle-functies}
+Deze bijlage bevat een overzicht van de belangrijkste turtle functies, waarvan de meeste in dit boek aan bod zijn gekomen. Een volledig (Engelstalig) overzicht van alle functies vind je in de officiële Python Turtle Graphics documentatie op \url{https://docs.python.org/3/library/turtle.html}.
+\section*{Bewegen en tekenen}
+\begin{longtblr}[theme=empty, presep=0pt, postsep=0pt,]{
+    rowhead = 1,
+    colspec={Q[l]X[l]},
+    column{1,2} = {font=\ttfamily\footnotesize},
+    row{1} = {font=\sffamily\bfseries},
+    stretch=1.5}
+    \topline
+    Functie & Werking\\
+    \clinels{1}\cliners{2}
+    %-----------------------------------------------
+    {forward(\textit{distance})\\fd(\textit{distance})} & Verplaats de turtle \textit{\texttt{distance}} vooruit.\\
+    {back(\textit{distance})\\bk(\textit{distance})} & Verplaats de turtle \textit{\texttt{distance}} achteruit.\\
+    {left(\textit{angle})\\lt(\textit{angle})} & Draai de turtle \textit{\texttt{angle}}\textdegree{} naar links.\\
+    {right(\textit{angle})\\rt(\textit{angle})} & Draai de turtle \textit{\texttt{angle}}\textdegree{} naar rechts.\\
+    %-----------------------------------------------
+    \midline
+    %-----------------------------------------------
+    {goto(\textit{x}, \textit{y})\\setpos(\textit{x}, \textit{y})} & Verplaats de turtle naar de positie (\textit{x}, \textit{y}).\\
+    {setheading(\textit{to\_angle})\\seth(\textit{to\_angle})} & Stel de richting van de turtle in naar \textit{\texttt{to\_angle}}\textdegree{}. Daarbij komt 0\textdegree{} overeen met het oosten, 90\textdegree{} met het noorden, enzovooort.\\
+    {home()} & Verplaats de turtle naar de oorsprong (\textit{0}, \textit{0}) en draai naar de oorspronkelijke startrichting (het oosten).\\
+    %-----------------------------------------------
+    \midline
+    %-----------------------------------------------
+    {circle(\textit{radius}, \textcolor{gray}{\textit{extent}}, \textcolor{gray}{\textit{steps}})} & Teken een cirkel met de gegeven \textit{radius}. Met \textit{extent} kun je een deel van de cirkel tekenen (180\textdegree is een halve cirkel). Met \textit{steps} geef je aan uit hoeveel lijnstukjes de cirkel moet bestaan.\\
+    {dot(\textit{size}, \textcolor{gray}{\textit{color}})} & Teken een stip met diameter \textit{size} en \textit{color}. Als je \textit{color} weglaat, wordt de huidige penkleur gebruikt. Om een dot te tekenen hoeft de pen niet op het papier te staan.\\
+    {stamp()} & Stempelt de huidige turtle shape op het papier.\\
+    %-----------------------------------------------
+    \midline
+    %-----------------------------------------------
+    {speed(\textit{speed})} & Stel de snelheid van de turtle in. De waarde van \textit{speed} kan variëren van 0 tot en met 10. Daarbij is 1 het langzaamst, 10 snel, en 0 het allersnelst.\\
+    \bottomline
+\end{longtblr}
+\section*{Bediening van de pen}
+\begin{longtblr}[theme=empty-with-notes, presep=0pt, postsep=0pt,
+    note{1}={Een lijst van kleurnamen vind je op \url{https://inventwithpython.com/blog/complete-list-tkinter-colors-valid-and-tested.html}}]{
+    rowhead = 1,
+    colspec={Q[l]X[l]},
+    column{1,2} = {font=\ttfamily\footnotesize},
+    row{1} = {font=\sffamily\bfseries},
+    stretch=1.5}
+    \topline
+    Functie & Werking\\
+    \clinels{1}\cliners{2}
+    %-----------------------------------------------
+    {pendown()\\pd()\\down()} & Zet de pen neer.\\
+    {penup()\\pu()\\up()} & Til de pen op.\\
+    {pensize(\textit{width})\\width(\textit{width})} & Stel de dikte van de pen in.\\
+    {pencolor(\textit{color})} & Stel de kleur van de pen in.\TblrNote{1}\\
+    \bottomline
+\end{longtblr}
+
+\end{document}
