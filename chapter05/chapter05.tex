@@ -131,7 +131,7 @@ Test of je nieuwe functie werkt door hem aan te roepen in het hoofdprogramma.
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -150,7 +150,7 @@ def triangle():
 
 # HOOFDPROGRAMMA
 triangle()
-\end{python} 
+\end{python-breakable} 
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{opgave}[icons={laptop}]
@@ -171,21 +171,21 @@ Voor deze opgave werk je verder in het bestand \file{turtle\_functions.py} dat j
 \begin{antwoord}
 \begin{qlist}[leftmargin=1.5cm, labelwidth=1.5cm]
 \item
-\begin{python}[style=mu, firstnumber=17, aboveskip=0pt]
+\begin{python-breakable}[style=mu-noframe, firstnumber=17, aboveskip=0pt]
 # HOOFDPROGRAMMA
 for i in range(8):
     triangle()
     tony.fd(50)
-\end{python}
+\end{python-breakable}
 \item
-\begin{python}[style=mu, firstnumber=17, aboveskip=0pt]
+\begin{python-breakable}[style=mu-noframe, firstnumber=17, aboveskip=0pt]
 # HOOFDPROGRAMMA
 for i in range(4):
     square()
     tony.fd(40)
     triangle()
     tony.fd(50)
-\end{python}
+\end{python-breakable}
 \end{qlist}
 \end{antwoord}
 \vspace{2\baselineskip}
@@ -321,7 +321,7 @@ square(tony, 100)
 \begin{antwoord}
 \begin{qlist}[leftmargin=1.5cm, labelwidth=1.5cm]
 \item
-\begin{python}[style=mu, firstnumber=5, aboveskip=0pt]
+\begin{python-breakable}[style=mu-noframe, firstnumber=5, aboveskip=0pt]
 # Functie square() tekent een vierkant
 def square(trtl, size, pnclr):
     trtl.color(pnclr)
@@ -331,9 +331,9 @@ def square(trtl, size, pnclr):
 
 # HOOFDPROGRAMMA
 square(tony, 100, 'red') 
-\end{python}
+\end{python-breakable}
 \item
-\begin{python}[style=mu, firstnumber=5, aboveskip=0pt]
+\begin{python-breakable}[style=mu, firstnumber=5, aboveskip=0pt]
 # Functie square() tekent een vierkant
 def square(trtl, size, pnclr, fllclr):
     trtl.color(pnclr)
@@ -346,7 +346,7 @@ def square(trtl, size, pnclr, fllclr):
 
 # HOOFDPROGRAMMA
 square(tony, 100, 'red', 'gold') 
-\end{python}
+\end{python-breakable}
 \end{qlist}
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -374,7 +374,7 @@ Zie je dat de functie \texttt{filled\_square()} gebruik maakt van de functie \te
 \end{center}
 \end{opgave}
 \begin{antwoord}
-\begin{python}[style=mu, aboveskip=0pt]
+\begin{python-breakable}[style=mu-noframe, aboveskip=0pt]
 import turtle
 
 tony = turtle.Turtle()
@@ -399,7 +399,7 @@ tony.pu()
 tony.fd(200)
 tony.pd()
 filled_square(tony, 100, 'red', 'gold')    
-\end{python}
+\end{python-breakable}
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{opgave}[icons={laptop}]
@@ -446,17 +446,17 @@ Hoe zou je de draaihoek voor een zeshoek, zevenhoek of achthoek kunnen berekenen
 \begin{antwoord}
 \begin{qlist}[leftmargin=1cm, labelwidth=1cm]
 \item
-\begin{python}[style=mu, numbers=none, aboveskip=0pt]
+\begin{python-breakable}[style=mu-noframe, numbers=none, aboveskip=0pt]
 # Functie polygon() tekent een regelmatige veelhoek
 def polygon(trtl, size, n):
     angle = 360 / n
     for zijde in range(n):
         trtl.fd(size)
         trtl.lt(angle)
-\end{python}
+\end{python-breakable}
 Je kunt de variabele \texttt{angle} ook weglaten en in plaats daarvan de berekening in de functieaanroep verwerken: \texttt{trtl.lt(360 / n)}. Het is echter vaak duidelijker om zo'n berekening eerst op te slaan in een variabele met een betekenisvolle naam, zoals \texttt{angle}.
 \item
-\begin{python}[style=mu, numbers=none, aboveskip=0pt]
+\begin{python}[style=mu-noframe, numbers=none, aboveskip=0pt]
 # Functie polygon() tekent een regelmatige veelhoek
 def polygon(trtl, size, n, pnclr):
     trtl.pencolor(pnclr)
@@ -466,7 +466,7 @@ def polygon(trtl, size, n, pnclr):
         trtl.lt(angle)
 \end{python}
 \item 
-\begin{python}[style=mu, numbers=none, aboveskip=0pt]
+\begin{python}[style=mu-noframe, numbers=none, aboveskip=0pt]
 # Functie polygon() tekent een regelmatige veelhoek
 def filled_polygon(trtl, size, n, pnclr, fllclr):
     trtl.fillcolor(fllclr)
@@ -787,5 +787,8 @@ for n in range(42):
 \end{python-breakable}
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% \clearpage
+% \pagestyle{empty}
+% \section*{Antwoorden extra opgaven hoofdstuk 12}
+% \printsolution[]{opgave}{5}
 \end{document}

@@ -137,7 +137,7 @@ De waarde die je tussen de haakjes aan de functie \texttt{tony.forward()} meegee
 \begin{antwoord}
 \begin{qlist}
 \item
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -150,9 +150,9 @@ tony.left(90)
 tony.forward(100)
 tony.left(90)
 tony.forward(100)
-\end{python}
+\end{python-breakable}
 \item
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -163,7 +163,7 @@ tony.left(120)
 tony.forward(100)
 tony.left(120)
 tony.forward(100)
-\end{python}
+\end{python-breakable}
 \item Om een gelijkzijdige driehoek te tekenen, moet je de schildpad 120\textdegree{} laten draaien. Dat is het verschil tussen 180\textdegree{} (een halve draai) en 60\textdegree{} (de hoek van de driehoek). Je kunt ook zeggen dat 360\textdegree{} gedeeld door 3 (het aantal zijden van de driehoek) gelijk is aan 120\textdegree{}.
 
 \begin{center}
@@ -245,7 +245,7 @@ Maak de code af zodat een volledige hoofdletter \textsf{H} wordt getekend.
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -259,7 +259,7 @@ tony.fd(60)
 tony.lt(90)
 tony.fd(50)
 tony.bk(100)
-\end{python}
+\end{python-breakable}
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Pen up, pen down en pen size}%
@@ -324,7 +324,7 @@ Breid je code in \file{hello\_turtle.py} uit zodat naast de letter \textsf{H} oo
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python-breakable}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -420,7 +420,7 @@ Extra uitdaging: probeer het huisje te tekenen zonder de pen van het papier te h
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python-breakable}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -514,7 +514,7 @@ Breid de code uit, zodat links van het driehoekje een regelmatige vijfhoek met r
 %--------------------------------------
 \begin{antwoord}
 In onderstaande uitwerking zijn de eerste coderegels weggelaten (let op de regelnummering).
-\begin{python-breakable}[style=mu, firstnumber=11]
+\begin{python-breakable}[style=mu-noframe, firstnumber=11]
 # Stel de penkleur en de vulkleur in
 tony.pencolor('black')
 tony.fillcolor('yellow')
@@ -653,7 +653,7 @@ Als je nog geen codebestand \file{turtle\_circles.py} had gemaakt om listing~\re
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python-breakable}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -693,7 +693,7 @@ Maak een nieuw codebestand aan en sla het op als \file{turtle\_traffic\_light.py
 %--------------------------------------
 \begin{antwoord}
 Hieronder een mogelijke oplossing. Je zult wellicht een andere aanpak hebben gekozen, en dat is prima. Er zijn vaak meerdere manieren om hetzelfde resultaat te bereiken in Python. Merk op dat je de \texttt{dot()} functie kunt gebruiken terwijl de pen omhoog is.
-\begin{python-breakable}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -726,9 +726,5 @@ tony.dot(120, 'red')
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \clearpage
-% \pagestyle{empty}
-% \section*{Antwoorden hoofdstuk 3}
-% \printsolutions[headings=false]
 
 \end{document}

@@ -137,7 +137,7 @@ Maak een nieuw codebestand en sla het op als \file{turtle\_triangle.py}. Importe
 \begin{antwoord}
 \begin{qlist}
 \item%
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -149,9 +149,9 @@ tony.lt(120)
 tony.fd(size)
 tony.lt(120)
 tony.fd(size)
-\end{python}
+\end{python-breakable}
 \item Hieronder een mogelijke oplossing. Omdat de stippen met de penkleur worden getekend, is het niet nodig de pen omhoog te doen. De getekende lijnen vallen weg tegen de stippen.
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -164,7 +164,7 @@ tony.dot(size)
 tony.fd(size)
 tony.lt(120)
 tony.dot(size)
-\end{python}
+\end{python-breakable}
 \end{qlist}
 
 \end{antwoord}
@@ -199,7 +199,7 @@ Maak een nieuw codebestand en sla het op als \file{turtle\_target.py}.
 \begin{antwoord}
 \begin{qlist}
 \item%
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -208,9 +208,9 @@ size = 300
 tony.dot(size, 'lightskyblue')
 tony.dot(size * 2/3, 'red')
 tony.dot(size * 1/3, 'yellow')
-\end{python}
+\end{python-breakable}
 \item%
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -225,7 +225,7 @@ tony.bk(size / 2)
 tony.rt(90)
 tony.pd()
 tony.circle(size / 2)
-\end{python}
+\end{python-breakable}
 \end{qlist}
 
 \end{antwoord}
@@ -253,7 +253,7 @@ Schrijf een programma dat een cirkel tekent met daaromheen een vierkant, zoals i
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -269,7 +269,7 @@ tony.lt(90)
 tony.fd(2 * radius)
 tony.lt(90)
 tony.fd(radius)
-\end{python}
+\end{python-breakable}
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{While loops}%
@@ -525,7 +525,7 @@ Maak een nieuw codebestand en sla het op als \file{turtle\_triangle\_loops.py}. 
 \begin{antwoord}
 \begin{qlist}
 \item%
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -535,9 +535,9 @@ while zijde < 3:
     tony.fd(100)
     tony.lt(120)
     zijde = zijde + 1
-\end{python}
+\end{python-breakable}
 \item Hieronder een mogelijke oplossing. Omdat de stippen met de penkleur worden getekend, is het niet nodig de pen omhoog te doen. De getekende lijnen vallen weg tegen de stippen.
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu]
 import turtle
 
 tony = turtle.Turtle()
@@ -551,7 +551,7 @@ while driehoek < 4:
         zijde = zijde + 1
     tony.fd(100)
     driehoek = driehoek + 1
-\end{python}
+\end{python-breakable}
 \end{qlist}
 
 \end{antwoord}
@@ -568,7 +568,7 @@ Maak een nieuw codebestand en sla het op als \file{turtle\_square\_star.py}. Sch
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -582,7 +582,7 @@ while vierkant < 20:
         zijde += 1
     tony.lt(18)
     vierkant += 1
-\end{python}
+\end{python-breakable}
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{opgave}[icons={laptop}]
@@ -620,7 +620,7 @@ while ...:
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python}[style=mu]
+\begin{python-breakable}[style=mu-noframe]
 import turtle
 
 tony = turtle.Turtle()
@@ -640,7 +640,7 @@ while rij < 10:
     tony.fd(30)
     tony.rt(90)
     rij += 1
-\end{python}
+\end{python-breakable}
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{opgave}[icons={laptop}]
@@ -747,11 +747,11 @@ Maak een nieuw codebestand en sla het op als \file{turtle\_star.py}. Schrijf een
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python}[style=mu, numbers=none]
+\begin{python-breakable}[style=mu-noframe, numbers=none]
 for n in range(5):
     tony.fd(200)
     tony.rt(144)
-\end{python}
+\end{python-breakable}
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{opgave}[icons={laptop}]
@@ -777,7 +777,7 @@ Je kunt de bloem nog mooier maken door \texttt{fillcolor()}, \texttt{begin\_fill
 \end{opgave}
 %--------------------------------------
 \begin{antwoord}
-\begin{python}[style=mu, numbers=none]
+\begin{python-breakable}[style=mu-noframe, numbers=none]
 import turtle
 
 tony = turtle.Turtle()
@@ -795,7 +795,7 @@ for vierkant in range(10):
     tony.lt(36)
 tony.end_fill()
 tony.dot(60, 'yellow')
-\end{python}
+\end{python-breakable}
 \end{antwoord}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
