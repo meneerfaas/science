@@ -478,6 +478,16 @@
     numbers=left,
 }
 
+\lstdefinestyle{mu-noframe}{%
+    commentstyle=\color{code_grey}\itshape,
+    keywordstyle=\keywordstyleifnotalreadystringstyle,
+    keywordstyle={[2]\color{code_darkblue}},
+    numberstyle=\small\color{code_grey},
+    stringstyle=\color{code_maroon},
+    numbers=left,
+    frame=none,
+}
+
 % New listing environment to prevent breaking across pages
 \lstnewenvironment{python}[1][]{%
     \noindent\minipage[t]{\linewidth}\lstset{#1}}{%
